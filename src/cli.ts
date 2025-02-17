@@ -1,5 +1,5 @@
-import { menuStructure } from ".";
-import { MenuStructure } from "./types/menuStructure";
+import { menuStructure } from "./index.js";
+import { MenuStructure } from "./types/menuStructure.js";
 
 export const handleCliArguments = async (args: string[]) => {
     let currentMenu: keyof MenuStructure = "main";

@@ -1,12 +1,9 @@
 import inquirer from "inquirer";
-import { MenuStructure } from "./types/menuStructure";
-import { menuStructure } from ".";
+import { MenuStructure } from "./types/menuStructure.js";
+import { menuStructure } from "./index.js";
 
 export const showMenu = async (menuKey: keyof MenuStructure = "main") => {
-    console.log(menuStructure);
     const menu = menuStructure[menuKey];
-    console.log("Content of menuItem with key: ", menuKey);
-    console.log("menu: ", menu);
 
     const { choice } = await inquirer.prompt([
         {

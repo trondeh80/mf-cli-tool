@@ -1,6 +1,6 @@
-import { handleCliArguments } from "./cli";
-import { showMenu } from "./menu";
-import { MenuStructure, MenuOption } from "./types/menuStructure";
+import { handleCliArguments } from "./cli.js";
+import { showMenu } from "./menu.js";
+import { MenuStructure, MenuOption } from "./types/menuStructure.js";
 
 // No-op function as a placeholder for real implementations
 const noop = async () => { console.log("Not implemented yet."); };
