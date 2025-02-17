@@ -1,0 +1,1 @@
+// TODO: add action function for managing microfrontend vite config & package.json
