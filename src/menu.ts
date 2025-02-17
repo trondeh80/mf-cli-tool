@@ -38,8 +38,9 @@ export const showMenu = async (menuKey: keyof MenuStructure = "main") => {
 };
 
 // Function to dynamically navigate the help menu
-export const showHelp = async (menuKey: keyof MenuStructure = "main") => {
-    const menu = menuStructure[menuKey];
+export const showHelp = async (menuKey: keyof MenuStructure = "help") => {
+    const isHelp = menuKey === "help";
+    const menu = menuStructure[isHelp ? "main" : menuKey];
 
     if (!menu || !menu.options) {
         // If it's a leaf command, display its help text
@@ -50,18 +51,16 @@ export const showHelp = async (menuKey: keyof MenuStructure = "main") => {
     }
 
     // Fetch all available subcommands
-    const choices = menu.options.map(option => ({
-        name: `${option.name} - ${option.helpText || "No description available."}`,
-        value: option.value,
+    const choices = menu.options
+        .map(option => ({
+            name: `${option.name} - ${option.helpText || "No description available."}`,
+            value: option.value,
     }));
 
-    // Add a back option if not in the main menu
-    if (menuKey !== "main") {
-        choices.push({ name: "⬅️  Back to previous menu", value: "main" });
-    }
-
     // Add an exit option
-    choices.push({ name: "🚪 Exit Help", value: "exit" });
+    if (isHelp) {
+        choices.push({ name: "🚪 Exit Help", value: "main" });
+    }
 
     // Prompt user to select a command
     const { selectedCommand } = await inquirer.prompt([
@@ -74,12 +73,12 @@ export const showHelp = async (menuKey: keyof MenuStructure = "main") => {
     ]);
 
     if (selectedCommand === "exit") {
-        console.log("Exiting CLI...");
+        console.log("Avslutter");
         process.exit(0);
     }
 
     if (selectedCommand === "main") {
-        await showHelp("main");
+        await showMenu();
     } else {
         await showHelp(selectedCommand as keyof MenuStructure);
     }
