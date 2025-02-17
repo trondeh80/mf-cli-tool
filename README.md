@@ -42,9 +42,8 @@ A TypeScript-based Command Line Interface (CLI) tool designed to streamline the 
 
 Before using this CLI tool, ensure you have the following installed:
 
-- **Node.js** (v16 or higher)
-- **npm** (v7 or higher) or **yarn** (v1.22 or higher)
-- **TypeScript** (v4.5 or higher, if developing or extending the tool)
+- **Node.js** (v20 or higher)
+- **TypeScript** (v5.7 or higher, if developing or extending the tool)
 - A modern terminal (e.g., Bash, Zsh, or Windows Command Prompt)
 
 ---
@@ -53,5 +52,11 @@ Before using this CLI tool, ensure you have the following installed:
 
 1. Clone the repository to your local machine:
 
-   ```bash
-   [git clone](https://x.com/i/grok?text=git%20clone) https://github.com/your-username/microfrontend-cli.git
+2. Install dependencies
+   ```npm i```
+
+3. Build the tool
+   ```npm run build```
+
+4. Run the tool
+  ```node/dist/index.js```
